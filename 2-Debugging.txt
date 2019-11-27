@@ -1,0 +1,43 @@
+Part Two: Fixing the Bugs
+-------------------------
+
+Understanding the code
+
+  1) Explain why this program uses the exclamation operator with the
+     strcmp() function.
+
+
+     A: 0 in the program mean false. strcmp(A,B) = 0 if A is equal to B. !strcmp(A,B) mean A is not equal to B.
+
+
+
+  2) Explain why the 'LENGTH' macro returns the length of an array.
+     Would it work with a pointer to a dynamically allocated array? (Hint:
+     understand sizeof).
+
+The size of memory space occupied by the array
+A: 'LENGTH' shows that in (sizeof(s) / sizeof(*s)), sizeof(s) show The size of memory space occupied by the array. sizeof(*s) indicates the size of memory space occupied by the first element in the array.
+    NO, it would not work with a pointer since "sizeof" gets the byte size guaranteed to accommodate the maximum object set up by the implementation and it is computed at compile time. Therefore, sizeof cannot be used to return the size of dynamically allocated memory space.
+
+
+
+Bug hunting
+
+  3) Explain and fix the logical flow bug within the switch statement.
+     (What happens when the -h option is used?)
+
+     A: if there no break, the program will continue to print the statment of "%s: Invalid option %s. Use -h for help.\n"
+
+
+
+  4) Explain and fix the argument parsing error. (Why is entrycount never
+     zero?)
+
+    
+     A: when it read the first buffer "./mian" entrycount plus one. therefore, it never come to the condition of  if (entryCount == 0) now, I add argv++ at the beginning of the while loop in order to avoid the "./main" statement
+
+
+  5) Fix print_result() to print results correctly and in the same order
+     as the words were specified on the command line.  Explain your solution.
+
+     A: since entries->word and entries->counter print the same position because it does not change the position of the pointer, so entries always points at the same position. 
